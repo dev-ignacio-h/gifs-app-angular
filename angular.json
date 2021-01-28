@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gifts-app": {
+    "gifs-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/gifts-app",
+            "outputPath": "dist/gifs-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "gifts-app:build"
+            "browserTarget": "gifs-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "gifts-app:build:production"
+              "browserTarget": "gifs-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "gifts-app:build"
+            "browserTarget": "gifs-app:build"
           }
         },
         "test": {
@@ -113,16 +113,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "gifts-app:serve"
+            "devServerTarget": "gifs-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "gifts-app:serve:production"
+              "devServerTarget": "gifs-app:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "gifts-app"
+  "defaultProject": "gifs-app"
 }
