@@ -9,6 +9,9 @@ export class GifsService {
   private baseUrl: string = 'https://api.giphy.com/v1/gifs';
   private _record: string[] = [];
 
+  // TODO: change any
+  public results: any[] = [];
+
   get record() {
     return [...this._record];
   }
@@ -25,7 +28,7 @@ export class GifsService {
     this.http
       .get(`${this.baseUrl}/search?${this.apiKey}&q=${query}&limit=12`)
       .subscribe((resp: any) => {
-        console.log(resp.data);
+        this.results = resp.data;
       });
   }
 }
