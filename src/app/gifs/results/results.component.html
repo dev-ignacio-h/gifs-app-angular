@@ -1,11 +1,19 @@
 <div class="col">
   <div class="row">
-    <div  *ngFor="let gif of results" class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-      <div class="card">
-        <img class="card-img-top" [src]="gif.images.downsized_medium.url" [alt]="gif.title">
+    <div
+      *ngFor="let gif of results"
+      class="card-group col-sm-12 col-md-6 col-lg-4 col-xl-3"
+    >
+      <div class="card mb-4">
+        <img
+          style="object-fit: cover;"
+          class="card-img-top w-100"
+          [src]="gif.images.original.url"
+          [alt]="gif.title"
+        />
         <div class="card-body">
           <p class="card-text">
-            {{  gif.title}}
+            {{ gif.title }}
           </p>
         </div>
       </div>

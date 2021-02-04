@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Gif, SearchGifsResponse } from './../interfaces/gifs.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -10,24 +11,31 @@ export class GifsService {
   private _record: string[] = [];
 
   // TODO: change any
-  public results: any[] = [];
+  public results: Gif[] = [];
 
   get record() {
     return [...this._record];
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this._record  = JSON.parse(localStorage.getItem('record')!) || []
+    // if(localStorage.getItem('record')) {
+    //   this._record  = JSON.parse(localStorage.getItem('record')!)
+    // }
+  }
 
   searchGifs(query: string) {
     query = query.trim().toLowerCase();
     if (!this._record.includes(query)) {
       this._record.unshift(query);
       this._record = this._record.splice(0, 10);
+
+      localStorage.setItem('record', JSON.stringify(this._record))
     }
 
     this.http
-      .get(`${this.baseUrl}/search?${this.apiKey}&q=${query}&limit=12`)
-      .subscribe((resp: any) => {
+      .get<SearchGifsResponse>(`${this.baseUrl}/search?${this.apiKey}&q=${query}&limit=12`)
+      .subscribe((resp) => {
         this.results = resp.data;
       });
   }
