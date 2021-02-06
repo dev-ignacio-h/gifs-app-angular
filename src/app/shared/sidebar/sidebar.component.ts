@@ -12,5 +12,10 @@ export class SidebarComponent {
     return this.gifsService.record
   }
 
+  getSearch(gif: string) {
+    console.log(gif)
+    this.gifsService.searchGifs(gif)
+  }
+
 
 }
